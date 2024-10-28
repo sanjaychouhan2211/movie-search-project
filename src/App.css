@@ -1,38 +1,74 @@
-.App {
+body {
+  background-color: #f8f9fa; /* Light background for the page */
+}
+
+.card {
+  border-radius: 10px; /* Rounded corners */
+  border: none; /* Remove border */
+}
+
+.card-body h2 {
+  font-weight: bold; /* Bold title */
+  color: #343a40; /* Dark color for title */
+}
+
+button.btn-primary {
+  background-color: #007bff; /* Custom blue */
+  border-color: #007bff;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.custom-padding {
+  padding-left: 700px;
+}
+.movie-card {
+  width: 22rem;
+  height: 100%;
+}
+
+.movie-image {
+  width: 100%;
+  height: 250px; /* Set fixed height */
+  object-fit: cover;
+}
+.movie-card .movie-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.movie-card .custom-font {
+  display: inline-flex;
+  justify-content: space-around;
   text-align: center;
+  font-size: 14px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-card-buttons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+}
+.movie-modal .modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.movie-modal img {
+  object-fit: cover;
+}
+.watchlist-img-class {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
