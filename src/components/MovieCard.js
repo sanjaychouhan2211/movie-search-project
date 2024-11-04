@@ -10,11 +10,11 @@ import CustomToast from "./CustomToast";
 const dummyImage = "./dummyImage.png";
 const MovieCard = ({ movie, onClick }) => {
   const dispatch = useDispatch();
-  const getWatchlist = useSelector((state) => state.watchlist) || [];
+  const getWatchlist = useSelector((state) => state.watchlist?.watchlist) || [];
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  const isInWatchlist = getWatchlist.some((m) => m.imdbID === movie.imdbID);
+  const isInWatchlist = getWatchlist?.some((m) => m.imdbID === movie.imdbID);
 
   const handleWatchlistToggle = () => {
     if (isInWatchlist) {

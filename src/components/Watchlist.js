@@ -4,7 +4,7 @@ import { removeFromWatchlist } from "../features/watchlistSlice";
 import { Container, Card, Row, Col, Button } from "react-bootstrap";
 
 const Watchlist = () => {
-  const watchlist = useSelector((state) => state.watchlist);
+  const watchlist = useSelector((state) => state.watchlist?.watchlist);
   const dispatch = useDispatch();
   const dummyImage = "../dummyImage.png";
 
@@ -12,13 +12,13 @@ const Watchlist = () => {
     <>
       <Container>
         <h2>My Watchlist</h2>
-        {watchlist.length === 0 ? (
+        {watchlist?.length === 0 ? (
           <p>No movies added to watchlist yet.</p>
         ) : (
           <Row>
-            {watchlist.map((movie) => (
+            {watchlist?.map((movie) => (
               <Col md={4} key={movie.imdbID} className="mb-4">
-                <Card>
+                <Card className="movie-card mb-3">
                   <Card.Img
                     variant="top"
                     src={
@@ -29,7 +29,9 @@ const Watchlist = () => {
                     className="watchlist-img-class"
                   />
                   <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
+                    <Card.Title className="movie-title">
+                      {movie.Title}
+                    </Card.Title>
                     <Button
                       variant="danger"
                       onClick={() =>

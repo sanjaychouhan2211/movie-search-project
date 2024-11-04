@@ -11,17 +11,23 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const validateUsername = () => {
+    const usernameError = !username.match(/^[a-zA-Z0-9]+$/)
+      ? "Username must be alphanumeric only"
+      : "";
+    setErrors((prevErrors) => ({ ...prevErrors, username: usernameError }));
+  };
+
+  const validatePassword = () => {
+    const passwordError =
+      password.length <= 4 ? "Password must be at least 6 characters long" : "";
+    setErrors((prevErrors) => ({ ...prevErrors, password: passwordError }));
+  };
 
   const validate = () => {
-    const errors = {};
-    if (!username.match(/^[a-zA-Z0-9]+$/)) {
-      errors.username = "Username must be alphanumeric only";
-    }
-    if (password.length < 6) {
-      errors.password = "Password must be at least 6 characters long";
-    }
-    setErrors(errors);
-    return Object.keys(errors).length === 0;
+    validateUsername();
+    validatePassword();
+    return !errors.username && !errors.password;
   };
 
   const handleSubmit = (e) => {
@@ -57,7 +63,9 @@ const Login = () => {
                     value={username}
                     onChange={(e) => {
                       setUsername(e.target.value);
+                      validateUsername(); // Validate on change
                     }}
+                    onBlur={validateUsername} // Validate on blur
                   />
                   {errors.username && (
                     <small className="text-danger">{errors.username}</small>
@@ -72,10 +80,12 @@ const Login = () => {
                     value={password}
                     onChange={(e) => {
                       setPassword(e.target.value);
+                      validatePassword(); // Validate on change
                     }}
+                    onBlur={validatePassword} // Validate on blur
                   />
-                  {errors.username && (
-                    <small className="text-danger">{errors.username}</small>
+                  {errors.password && (
+                    <small className="text-danger">{errors.password}</small>
                   )}
                 </Form.Group>
 

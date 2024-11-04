@@ -48,9 +48,6 @@ const moviesSlice = createSlice({
     loadUserWatchlist: (state, action) => {
       state.watchlist = loadWatchlist(action.payload); // Load watchlist for the specific user
     },
-    clearWatchlist: (state) => {
-      state.watchlist = [];
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -71,6 +68,6 @@ export const {
   addToWatchlist,
   removeFromWatchlist,
   loadUserWatchlist,
-  clearWatchlist,
+  // clearWatchlist,
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

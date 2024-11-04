@@ -10,10 +10,8 @@ const dummyImage = "../dummyImage.png"; // Placeholder image path
 
 const MovieModal = ({ movie, show, onHide }) => {
   const dispatch = useDispatch();
-  const getWatchlist = useSelector((state) => state.watchlist.movies) || [];
-
-  const isInWatchlist = getWatchlist.some((m) => m.imdbID === movie.imdbID);
-
+  const newWatchlist = useSelector((state) => state.watchlist?.watchlist) || [];
+  const isInWatchlist = movie && newWatchlist.some((m) => m.imdbID === movie.imdbID);
   const handleWatchlistToggle = () => {
     if (isInWatchlist) {
       dispatch(removeFromWatchlist(movie.imdbID));

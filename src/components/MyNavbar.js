@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout, logoutAndClearData } from "../features/authSlice"; // Assuming you have an authSlice
+import { logout } from "../features/authSlice"; // Assuming you have an authSlice
 import { useNavigate } from "react-router-dom";
+import { clearWatchList } from "../features/watchlistSlice";
 
 const MyNavbar = () => {
   const { isLoggedIn, username } = useSelector((state) => state.auth);
+  const watchlist = useSelector((state) => state.watchlist);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logoutAndClearData());
+    dispatch(clearWatchList())
     dispatch(logout());
     navigate("/login");
   };

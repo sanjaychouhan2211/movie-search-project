@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { clearWatchlist } from "./moviesSlice";
 
 // Mock login
 export const login = createAsyncThunk(
@@ -49,7 +48,6 @@ const authSlice = createSlice({
 export const { logout } = authSlice.actions;
 export const logoutAndClearData = () => (dispatch) => {
   dispatch(logout());
-  dispatch(clearWatchlist());
-  localStorage.removeItem("watchlist");
+  // localStorage.removeItem("watchlist");
 };
 export default authSlice.reducer;
