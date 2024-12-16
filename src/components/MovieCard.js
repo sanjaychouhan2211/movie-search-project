@@ -29,7 +29,7 @@ const MovieCard = ({ movie, onClick }) => {
 
   return (
     <>
-      <Card className="movie-card mb-3">
+      <Card className="movie-card mb-3 ">
         <Card.Img
           variant="top"
           src={
